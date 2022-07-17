@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Topic Add</title>
+</head>
+<body>
+    <form th:action="@{/topicExample}" method="post">
+        tagname:<input type="text" name="tagname"><br>
+        name:<input type="text" name="name"><br>
+        url:<input type="text" name="url"><br>
+        weight:<input type="text" name="weight"><br>
+        note:<input type="text" name="note"><br>
+        <input type="submit" value="add"><br>
+    </form>
+</body>
+</html>

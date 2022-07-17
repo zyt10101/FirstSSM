@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:action="@{/topicById}" method="post">
+        <input type="hidden" name="_method" value="put">
+        <input type="hidden" name="id" th:value="${topicById.id}">
+        tagname:<input type="text" name="tagname" th:value="${topicById.tagname}"><br>
+        name:<input type="text" name="name" th:value="${topicById.name}"><br>
+        url:<input type="text" name="url" th:value="${topicById.url}"><br>
+        weight:<input type="text" name="weight" th:value="${topicById.weight}"><br>
+        note:<input type="text" name="note" th:value="${topicById.note}"><br>
+        <input type="submit" value="update"><br>
+    </form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="dbconfig.properties"/>
+    <!--设置某个类型的别名(不区分大小写) alias不设置的话就是类名不区分大小写-->
+    <typeAliases>
+        <!--<typeAlias type="com.mybatis.pojo.User" alias="user"></typeAlias>-->
+        <!--以包为单位将所有类型设置为默认的类型别名-->
+        <package name="com.zheng"/>
+    </typeAliases>
+    <!--
+        environments:配置多个连接数据库的环境
+        属性
+           default：默认数据库的环境
+    -->
+    <!--设置连接数据库的环境-->
+    <environments default="development">
+        <!--environment:某个数据库环境,id: 唯一标识不能重复-->
+        <environment id="development">
+            <transactionManager type="JDBC"/><!--事务管理属性JDBC(事物的提交回滚手动处理)/MANAGED(被管理如Spring)-->
+            <dataSource type="POOLED"><!--配置数据源 POOLED-使用数据库连接池缓存数据库连接 UNPOOLED,JND使用上下文的 -->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url"
+                          value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+</configuration>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update</title>
+</head>
+<body>
+    <form th:action="@{/tagById}" method="post">
+        <input type="hidden" name="_method" value="put">
+        <input type="hidden" name="id" th:value="${tagById.id}">
+        name:<input type="text" name="name" th:value="${tagById.name}"><br>
+        url:<input type="text" name="url" th:value="${tagById.url}"><br>
+        <input type="submit" value="update"><br>
+    </form>
+</body>
+</html>

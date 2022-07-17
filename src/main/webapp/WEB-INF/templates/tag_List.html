@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1" cellspacing="0" cellpadding="0" style="text-align:center">
+        <tr>
+            <th colspan="5">Tag Info</th>
+        </tr>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>url</th>
+            <th>options(<a th:href="@{/tagAdd}">添加</a>)</th>
+        </tr>
+        <tr th:each="Tag:${tagList}">
+            <td th:text="${Tag.id}"></td>
+            <td th:text="${Tag.name}"></td>
+            <td th:text="${Tag.url}"></td>
+            <td>
+                <form th:action="@{|/tag/${Tag.id}|}" method="post" >
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="submit" value="delete">
+                </form>
+                <a th:href="@{|/tag/${Tag.id}|}">update</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

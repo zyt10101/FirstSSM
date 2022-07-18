@@ -18,31 +18,35 @@ public class TopicExampleController {
     @Autowired
     private TopicExampleService topicExampleService;
 
-    @RequestMapping(value ="/topicExample",method = RequestMethod.GET)
-    public String getAllTopic( Model model ){
+    @RequestMapping(value = "/topicExample", method = RequestMethod.GET)
+    public String getAllTopic ( Model model ) {
         List<Topic> topicList = topicExampleService.getAllTopic ( );
-        model.addAttribute ( "topicList",topicList );
+        model.addAttribute ( "topicList", topicList );
         return "topic_List";
     }
-    @RequestMapping(value = "/topicExample/{id}",method = RequestMethod.DELETE)
-    public String deleteTopic( @PathVariable("id")Integer id ){
+
+    @RequestMapping(value = "/topicExample/{id}", method = RequestMethod.DELETE)
+    public String deleteTopic ( @PathVariable("id") Integer id ) {
         topicExampleService.deleteTopic ( id );
         return "redirect:/topicExample";
     }
-    @RequestMapping(value ="/topicExample",method = RequestMethod.POST)
-    public String insertTopicExample(Topic topic){
+
+    @RequestMapping(value = "/topicExample", method = RequestMethod.POST)
+    public String insertTopicExample ( Topic topic ) {
         topicExampleService.insertTopic ( topic );
         return "redirect:/topicExample";
     }
 
-    @RequestMapping(value = "/topicExample/{id}",method =RequestMethod.GET )
-    public String getTopicById(@PathVariable("id")Integer id,Model model){
+    //数据回显并修改　  将数据共享到域中
+    @RequestMapping(value = "/topicExample/{id}", method = RequestMethod.GET)
+    public String getTopicById ( @PathVariable("id") Integer id, Model model ) {
         Topic topic = topicExampleService.getTopicById ( id );
-        model.addAttribute ( "topicById",topic );
+        model.addAttribute ( "topicById", topic );
         return "topic_update";
     }
-    @RequestMapping(value = "/topicExample",method = RequestMethod.PUT)
-    public String updateTopic(Topic topic){
+
+    @RequestMapping(value = "/topicExample", method = RequestMethod.PUT)
+    public String updateTopic ( Topic topic ) {
         topicExampleService.updateTopic ( topic );
         return "redirect:/topicExample";
     }
